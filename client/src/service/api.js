@@ -10,4 +10,14 @@ export const addUser= async(data)=>
     {
         console.log("error while posting API", error.message);
     }
-}
+};
+
+export const getAnimes = async () => {
+    try {
+        const response = await axios.get(`${url}/animes`);
+        return response.data;  // Return the fetched anime data
+    } catch (error) {
+        console.log("Error while fetching animes", error.message);
+        return [];  // Return an empty array if an error occurs
+    }
+};

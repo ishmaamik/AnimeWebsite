@@ -15,6 +15,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.listen(PORT, ()=> console.log(`Server running successfully on PORT ${PORT}`));
 app.use('/', route);
+
+app.get(`/`, (req, res)=>{
+    res.send(`Hi Anime!`)
+})
+
 Connection(username, password);
 
 

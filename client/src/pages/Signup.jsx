@@ -1,5 +1,4 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import Home from "./Home";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { addUser } from "../service/api";
