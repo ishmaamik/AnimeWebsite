@@ -11,13 +11,13 @@ function App() {
   return (
     <Box 
     bgcolor={"#fee8da"}
-    overflowX="hidden"  // Prevent horizontal overflow
+    // overflowX="hidden"  // Prevent horizontal overflow
     minHeight="100vh"
-    
+    overflow={"auto"}
     maxWidth={"100%"}
     flexDirection="column"
     boxSizing="border-box" // Ensure padding and borders are included in the element's total width and height
-    overflow={"hidden"}  // Ensure padding and borders are included in the element's total width and height
+    // Ensure padding and borders are included in the element's total width and height
     >
     <UserProvider>
     <Router>

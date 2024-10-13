@@ -21,10 +21,20 @@ const Home = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Anime List</h1>
+        <Box 
+            // display="flex" 
+            // flexDirection="column" 
+            // justifyContent="center" 
+            // alignItems="center" 
+            pt={4}
+            maxHeight="100vh"  // Set a max height for the component (adjust as per your design)
+            overflow="hidden"  // Enable vertical scrolling
+            // width="100%"
+            // padding={2}
+        >
+            <Typography variant="h4">Anime List</Typography>
             <TagButtons/>
-            <Box display={'flex'}>
+            <Box display={'flex'} overflow={'auto'} pt={4} whiteSpace="nowrap">
             {animes.length > 0 ? (
                 animes.map((anime) => (
                     <div key={anime._id}>
@@ -32,7 +42,7 @@ const Home = () => {
                     
                         <Typography variant="body1" sx={{  whiteSpace: 'normal'}}>{anime.name}</Typography>
                         <Link to={`/animes/${anime.name}`}>
-                        <img  height={"350px"} width={"230px"} src={anime.imageUrl} alt={anime.name} />
+                        <img  height={"330px"} width={"200px"} src={anime.imageUrl} alt={anime.name} />
                         </Link>
                     </Box>
                     </div>
@@ -41,7 +51,7 @@ const Home = () => {
                 <p>No animes found</p>  // Display a fallback if no animes are found
             )}
             </Box>
-        </div>
+        </Box>
     );
 };
 
