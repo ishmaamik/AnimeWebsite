@@ -4,7 +4,9 @@ const url='http://localhost:3000';
 export const addUser= async(data)=>
 {
     try{
-       await axios.post(`${url}/add`, data);
+       const response= await axios.post(`${url}/add`, data);
+       console.log("user added");
+       return response;
     }
     catch(error)
     {
@@ -31,3 +33,12 @@ export const getAnimeName= async(animeName)=>{
         console.log("Error finding anime", error.message);
     }
 }
+
+export const postReview = async (reviewData) => {
+    try {
+        // Ensure that the data is passed as a body, not as parameters
+        await axios.post(`${url}/reviews`, reviewData);
+    } catch (error) {
+        console.log("Error while posting review", error.message);
+    }
+};

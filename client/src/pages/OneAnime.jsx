@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAnimeName } from "../service/api";
 import { useParams } from "react-router-dom";
+import Review from "./Review";
+import { UserContext } from "./UserContext";
+
 
 const OneAnime = () => {
     const { animename } = useParams();  // Correctly extract animeName from the URL
+    const {username}= useContext(UserContext);
     const [anime, setAnime] = useState(null);  // The state variable should be 'anime'
     const [loading, setLoading] = useState(true);
 
@@ -30,6 +34,7 @@ const OneAnime = () => {
             <h1>{anime.name}</h1>
             <img height="350px" width="230px" src={anime.imageUrl} alt={anime.name} />
             <p>{anime.description}</p>
+            <Review animename={anime.name} username={username} />
         </div>
     );
 };

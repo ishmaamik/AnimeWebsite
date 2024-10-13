@@ -1,46 +1,52 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { addUser } from "../service/api";
+import { UserContext } from "./UserContext";
 
-const Signup=()=>{
+const Signup = () => {
+    const { username, setUsername } = useContext(UserContext);  // Access username and setUsername from context
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-    const [username, setUsername]= useState('');
-    const [password, setPassword]= useState('');
-    const navigate= useNavigate();
+    const executeLogin = async () => {
+        const userData = {
+            username,
+            password
+        };
 
-    const executeLogin= async()=>{
-       const userData={
-        username: username,
-        password: password
-       }
+        try {
+            const response = await addUser(userData);  // Capture the response
+            if (response && response.data) {  // Check if the response and response.data exist
+                console.log('Signup successful:', response.data.message);
+                navigate('/home');  // Redirect to home on success
+            } else {
+                console.error('No response data');
+            }
+        } catch (error) {
+            console.error('Error during signup:', error.response ? error.response.data : error.message);
+        }
+    };
 
-       try{
-        await addUser(userData);
-        console.log(`Signup successful`);
-        navigate(`/home`);
-       }
-       catch{
-        console.log('Error during signup', error);
-       }
-    }
-return(
-     
-    <>
-    <Box paddingLeft={"600px"}>
-        <Typography>Username: </Typography>
-        <TextField onChange={(e)=>{
-            setUsername(e.target.value);
-        }}/>
-        <Typography>Password: </Typography>
-        <TextField onChange={(e)=>{
-            setPassword(e.target.value);
-        }} type="password"/>
-        <p></p>
-        <Button variant="contained" onClick={executeLogin}>Signup</Button>
-    </Box>
-    </>
-)
-}
+    return (
+        <>
+            <Box paddingLeft={"600px"}>
+                <Typography>Username: </Typography>
+                <TextField 
+                      
+                    onChange={(e) => setUsername(e.target.value)}  // Update username from input
+                />
+                <Typography>Password: </Typography>
+                <TextField 
+                    
+                    onChange={(e) => setPassword(e.target.value)}  // Update password from input
+                    type="password"
+                />
+                <p></p>
+                <Button variant="contained" onClick={executeLogin}>Signup</Button>
+            </Box>
+        </>
+    );
+};
 
 export default Signup;

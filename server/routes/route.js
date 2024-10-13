@@ -6,7 +6,7 @@ const route= express.Router();
 
 route.post('/add', addUser);
 route.get('/animes', getAnimes);
-route.post('/reviews', postReview);
+route.post('/reviews', postReview); 
 route.get('/reviews/:anime', getReview);
 route.get('/animes/:animename', getAnimeName)
 export default route;

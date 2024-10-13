@@ -5,11 +5,11 @@ const reviewSchema= new mongoose.Schema({
     review:{
         type: String
     },
-    userid:{
+    username:{
         type: String,
         required: true
     },
-    anime:{
+    animename:{
         type: String,
         required: true
     }

@@ -1,26 +1,32 @@
 import Review from "../model/Review.js";
 
-export const postReview=async(req, res)=>{
-    try{
-        const {review, userid, anime}= req.body;
+export const postReview = async (req, res) => {
+    try {
+        const { review, username, animename } = req.body;
 
-        if(!userid || !anime){
-            res.status(400).json({message:"user id and anime must required"});
+        // Validate required fields
+        if (!username || !animename || !review) {
+            return res.status(400).json({ message: "Username, anime name, and review are required" });
         }
 
-        const newReview= new Review({
+        // Create a new review
+        const newReview = new Review({
             review,
-            userid,
-            anime
+            username,
+            animename
         });
+
+        // Save the review to the database
         await newReview.save();
 
+        // Send response after review is successfully saved
         return res.status(201).json({ message: "Review posted successfully!", review: newReview });
-    }
-    catch(error){
+    } catch (error) {
         return res.status(500).json({ message: "Error posting review", error: error.message });
     }
-}
+};
+
+
 
 export const getReview= async(req, res)=>{
     try{
