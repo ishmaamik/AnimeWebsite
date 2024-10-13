@@ -37,7 +37,7 @@ return(
             setPassword(e.target.value);
         }} type="password"/>
         <p></p>
-        <Button variant="contained" onClick={executeLogin}>Login</Button>
+        <Button variant="contained" onClick={executeLogin}>Signup</Button>
     </Box>
     </>
 )
