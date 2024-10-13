@@ -8,10 +8,10 @@ import { Router } from 'react-router-dom'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Box 
-       bgcolor={"#FAF9F6"}
+       bgcolor={"#fee8da"}
        overflowX="hidden"  // Prevent horizontal overflow
        minHeight="100vh"
-       display="flex"
+       
        maxWidth={"100%"}
        flexDirection="column"
        boxSizing="border-box" // Ensure padding and borders are included in the element's total width and height

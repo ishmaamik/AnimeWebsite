@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Box } from "@mui/material";
 import { useContext, useState } from "react";
 import { postReview } from "../service/api";
 
@@ -17,7 +17,7 @@ const Review = ({ animename, username, addNewReview}) => {
             
             console.log(`Posting review successful`);
             addNewReview(reviewData);  
-            setReview('');  // Clear the text field after posting
+            setReview("");  // Clear the text field after posting
         } catch (error) {
             console.log('Error during posting review', error);
         }
@@ -25,16 +25,17 @@ const Review = ({ animename, username, addNewReview}) => {
 
     return (
         <>
-            <TextField
-                value={review}
-                onChange={(e) => setReview(e.target.value)}
-                label="Write your review"
-                fullWidth
-                multiline
-            />
-            <Button onClick={postingReview} variant="contained">
-                Post Review
-            </Button>
+        <Box display="flex" flexDirection="column" alignItems="center" gap={2} width="100%">
+        <TextField
+             style={{backgroundColor:"white", outlineColor:"white"}}
+             value={review}
+             onChange={(e) => setReview(e.target.value)}
+             label="Write your review"
+        />
+        <Button onClick={postingReview} variant="contained" sx={{ mt: 1 }}>
+            Post Review
+        </Button>
+    </Box>
         </>
     );
 };

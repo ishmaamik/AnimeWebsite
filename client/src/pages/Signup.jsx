@@ -33,12 +33,12 @@ const Signup = () => {
             <Box paddingLeft={"600px"} pt={20}>
                 <Typography>Username: </Typography>
                 <TextField 
-                      
+                      style={{backgroundColor:"white", outlineColor:"white"}}
                     onChange={(e) => setUsername(e.target.value)}  // Update username from input
                 />
                 <Typography>Password: </Typography>
                 <TextField 
-                    
+                    style={{backgroundColor:"white", outlineColor:"white"}}
                     onChange={(e) => setPassword(e.target.value)}  // Update password from input
                     type="password"
                 />

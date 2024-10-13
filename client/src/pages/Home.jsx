@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAnimes } from '../service/api';
 import { Box, Typography} from "@mui/material";
 import { Link, useNavigate } from 'react-router-dom';
+import TagButtons from './TagButtons';
 
 const Home = () => {
     const [animes, setAnimes] = useState([]);
@@ -22,6 +23,7 @@ const Home = () => {
     return (
         <div>
             <h1>Anime List</h1>
+            <TagButtons/>
             <Box display={'flex'}>
             {animes.length > 0 ? (
                 animes.map((anime) => (

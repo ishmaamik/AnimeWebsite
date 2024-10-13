@@ -52,3 +52,15 @@ export const getReviews = async (animename) => {
         return [];  // Return an empty array if an error occurs
     }
 };
+
+
+export const getAnimeTags= async(tagname)=> {
+    try {
+        console.log(`Requesting animes for tag: ${tagname}`);  // Debugging log
+        const response = await axios.get(`${url}/animes/tag/${tagname}`);
+        return response.data;
+    } catch (error) {
+        console.log("Error getting anime by tag", error.message);
+        return [];
+    }
+}

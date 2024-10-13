@@ -82,7 +82,7 @@ const OneAnime = () => {
                 </Box>
                 </Box>
                 </Box>
-                <Box >
+                <Box display="flex" justifyContent="center" mt={4} >
             <Review animename={anime.name} username={username} addNewReview={addNewReview} />
             </Box>
         </div>

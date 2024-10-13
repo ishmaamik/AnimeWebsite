@@ -12,7 +12,8 @@ const animeSchema = new mongoose.Schema({
     },
     description:{
         type: String
-    }
+    },
+    tags: [String]
 
 
 });
