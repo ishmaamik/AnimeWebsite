@@ -9,7 +9,9 @@ const animeSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
         required: true
-    }  
+    }
+
+
 });
 
 const Anime = mongoose.model('anime', animeSchema);

@@ -21,3 +21,13 @@ export const getAnimes = async () => {
         return [];  // Return an empty array if an error occurs
     }
 };
+
+export const getAnimeName= async(animeName)=>{
+    try{
+        const response= await axios.get(`${url}/animes/${animeName}`);
+        return response.data;
+    }
+    catch(error){
+        console.log("Error finding anime", error.message);
+    }
+}

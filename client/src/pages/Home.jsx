@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAnimes } from '../service/api';
-import { Box, Typography } from "@mui/material";
+import { Box, Typography} from "@mui/material";
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const [animes, setAnimes] = useState([]);
@@ -28,8 +29,9 @@ const Home = () => {
                     <Box padding={2}>
                     
                         <Typography variant="body1" sx={{  whiteSpace: 'normal'}}>{anime.name}</Typography>
-                        <img height={"350px"} width={"230px"} src={anime.imageUrl} alt={anime.name} />
-                    
+                        <Link to={`/animes/${anime.name}`}>
+                        <img  height={"350px"} width={"230px"} src={anime.imageUrl} alt={anime.name} />
+                        </Link>
                     </Box>
                     </div>
                 ))
