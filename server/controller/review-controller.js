@@ -30,14 +30,14 @@ export const postReview = async (req, res) => {
 
 export const getReview= async(req, res)=>{
     try{
-        const {anime}= req.params;
+        const {animename}= req.params;
 
-        if (!anime) {
+        if (!animename) {
             return res.status(400).json({ message: "Anime is required to get reviews" });
         }
 
 
-        const reviews= await Review.find({anime});
+        const reviews= await Review.find({animename});
 
         if(reviews.length===0){
             res.status(404).json({message: "No reviews yet"});

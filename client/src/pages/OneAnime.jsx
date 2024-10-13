@@ -1,14 +1,16 @@
-import { useContext, useEffect, useState } from "react";
-import { getAnimeName } from "../service/api";
+import { useEffect, useState, useContext } from "react";
+import { getAnimeName, getReviews } from "../service/api";
 import { useParams } from "react-router-dom";
 import Review from "./Review";
 import { UserContext } from "./UserContext";
+import { Typography, Box } from "@mui/material";
 
 
 const OneAnime = () => {
     const { animename } = useParams();  // Correctly extract animeName from the URL
     const {username}= useContext(UserContext);
     const [anime, setAnime] = useState(null);  // The state variable should be 'anime'
+    const [reviews, setReviews]= useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -23,18 +25,57 @@ const OneAnime = () => {
             }
         };
 
+        const fetchReviews=async()=>{
+            try{
+                const fetchedReviews= await getReviews(animename);
+                setReviews(fetchedReviews);
+
+            }
+            catch(error){{
+                console.log('Error fetching anime:', error);
+            }}
+        }
+
         fetchAnime();  // Call the function
+        fetchReviews();
     }, [animename]);  // Correct dependency, should be animeName
+
+    const addNewReview = (newReview) => {
+        setReviews((prevReviews) => [...prevReviews, newReview]);  // Add the new review to the existing reviews
+    };
 
     if (loading) return <p>Loading...</p>;
     if (!anime) return <p>No anime found</p>;
 
     return (
         <div>
+            <Box display={"flex"}>
+                <Box>
             <h1>{anime.name}</h1>
             <img height="350px" width="230px" src={anime.imageUrl} alt={anime.name} />
             <p>{anime.description}</p>
-            <Review animename={anime.name} username={username} />
+            </Box>
+            <Box display={'flex'}>
+                <Typography>Reviews:</Typography>
+            {reviews.length > 0 ? 
+            ( reviews.map((review) => (
+                    <div key={review._id}>
+                    <Box padding={2} display={"flex"}>
+                    
+                        <Typography variant="body1" sx={{  whiteSpace: 'normal'}}>{review.username}:</Typography>
+                        <Typography>{review.review}</Typography>
+
+                    </Box>
+                    </div>
+                ))
+            )
+            : (
+                <p>No reviews found</p>  // Display a fallback if no animes are found
+            )}
+                </Box>
+
+                </Box>
+            <Review animename={anime.name} username={username} addNewReview={addNewReview} />
         </div>
     );
 };

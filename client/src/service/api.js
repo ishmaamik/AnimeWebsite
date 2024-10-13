@@ -42,3 +42,13 @@ export const postReview = async (reviewData) => {
         console.log("Error while posting review", error.message);
     }
 };
+
+export const getReviews=async(animename)=>{
+    try{
+        const response= await axios.get(`${url}/reviews/${animename}`);
+        return response.data;
+    }
+    catch(error){
+        console.log("Error while getting reviews", error.message);
+    }
+}

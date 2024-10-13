@@ -1,10 +1,11 @@
 import { Button, TextField } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { postReview } from "../service/api";
 
-const Review = ({ animename, username }) => {
-    const [review, setReview] = useState("");
 
+const Review = ({ animename, username, addNewReview}) => {
+    const [review, setReview] = useState("");
+    
     const postingReview = async () => {
         const reviewData = {
             animename: animename,  // This needs to be consistent with the backend
@@ -13,7 +14,9 @@ const Review = ({ animename, username }) => {
         };
         try {
             await postReview(reviewData);
+            
             console.log(`Posting review successful`);
+            addNewReview(reviewData);  
             setReview('');  // Clear the text field after posting
         } catch (error) {
             console.log('Error during posting review', error);

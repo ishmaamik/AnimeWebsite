@@ -18,7 +18,7 @@ const Signup = () => {
         try {
             const response = await addUser(userData);  // Capture the response
             if (response && response.data) {  // Check if the response and response.data exist
-                console.log('Signup successful:', response.data.message);
+                
                 navigate('/home');  // Redirect to home on success
             } else {
                 console.error('No response data');

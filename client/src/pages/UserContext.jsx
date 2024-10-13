@@ -4,10 +4,11 @@ export const UserContext= createContext(null);
 
 const UserProvider=({children})=>{
     const [username, setUsername]= useState('');
+    const [reviews, setReviews]= useState('');
     return(
         <>
         <UserContext.Provider value={{
-            username, setUsername
+            username, setUsername, reviews, setReviews
         }}>
             {children}
         </UserContext.Provider>
