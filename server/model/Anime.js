@@ -9,6 +9,9 @@ const animeSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
         required: true
+    },
+    description:{
+        type: String
     }
 
 

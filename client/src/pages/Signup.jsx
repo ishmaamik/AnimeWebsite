@@ -30,7 +30,7 @@ const Signup = () => {
 
     return (
         <>
-            <Box paddingLeft={"600px"}>
+            <Box paddingLeft={"600px"} pt={20}>
                 <Typography>Username: </Typography>
                 <TextField 
                       

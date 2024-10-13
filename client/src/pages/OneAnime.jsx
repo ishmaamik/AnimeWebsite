@@ -49,18 +49,25 @@ const OneAnime = () => {
 
     return (
         <div>
-            <Box display={"flex"}>
+            <Box display={"flex"}
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="10vh"
+            overflow={"hidden"}>
+                
+                <Box display={"flex"} >
                 <Box>
             <h1>{anime.name}</h1>
             <img height="350px" width="230px" src={anime.imageUrl} alt={anime.name} />
             <p>{anime.description}</p>
             </Box>
-            <Box display={'flex'}>
+            <Box pl={20} pt={16}>
                 <Typography>Reviews:</Typography>
             {reviews.length > 0 ? 
             ( reviews.map((review) => (
                     <div key={review._id}>
-                    <Box padding={2} display={"flex"}>
+                    <Box paddingLeft={2} display={"flex"}>
                     
                         <Typography variant="body1" sx={{  whiteSpace: 'normal'}}>{review.username}:</Typography>
                         <Typography>{review.review}</Typography>
@@ -73,9 +80,11 @@ const OneAnime = () => {
                 <p>No reviews found</p>  // Display a fallback if no animes are found
             )}
                 </Box>
-
                 </Box>
+                </Box>
+                <Box >
             <Review animename={anime.name} username={username} addNewReview={addNewReview} />
+            </Box>
         </div>
     );
 };

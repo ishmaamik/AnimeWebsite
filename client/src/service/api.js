@@ -43,12 +43,12 @@ export const postReview = async (reviewData) => {
     }
 };
 
-export const getReviews=async(animename)=>{
-    try{
-        const response= await axios.get(`${url}/reviews/${animename}`);
-        return response.data;
-    }
-    catch(error){
+export const getReviews = async (animename) => {
+    try {
+        const response = await axios.get(`${url}/reviews/${animename}`);
+        return response.data;  // Return the reviews from the API
+    } catch (error) {
         console.log("Error while getting reviews", error.message);
+        return [];  // Return an empty array if an error occurs
     }
-}
+};
