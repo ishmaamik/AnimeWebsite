@@ -16,7 +16,7 @@ const TagButtons = () => {
         try {
             const animes = await getAnimeTags(tagname);
             // Navigate to the tag results page with the fetched animes (you can pass the results via state)
-            navigate(`/animes/tag/${tagname}`, { state: { animes } });
+            navigate(`/animes/tag/${tagname}`, { state: { animes, tagname } });
         } catch (error) {
             console.log("Error fetching animes by tag:", error);
         }
