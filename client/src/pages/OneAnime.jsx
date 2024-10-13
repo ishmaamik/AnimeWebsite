@@ -60,9 +60,9 @@ const OneAnime = () => {
                 <Box>
             <h1>{anime.name}</h1>
             <img height="350px" width="230px" src={anime.imageUrl} alt={anime.name} />
-            <p>{anime.description}</p>
+            <p style={{maxWidth:"430px", maxHeight:"100px"}}>{anime.description}</p>
             </Box>
-            <Box pl={20} pt={16}>
+            <Box pl={20} pt={12}>
                 <Typography>Reviews:</Typography>
             {reviews.length > 0 ? 
             ( reviews.map((review) => (
@@ -82,7 +82,7 @@ const OneAnime = () => {
                 </Box>
                 </Box>
                 </Box>
-                <Box display="flex" justifyContent="center" mt={4} >
+                <Box display="flex" justifyContent="center" mt={2} >
             <Review animename={anime.name} username={username} addNewReview={addNewReview} />
             </Box>
         </div>

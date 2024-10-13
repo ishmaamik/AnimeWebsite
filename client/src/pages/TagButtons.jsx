@@ -7,7 +7,7 @@ const TagButtons = () => {
     const [selectedTag, setSelectedTag] = useState("");
     const navigate = useNavigate();
 
-    const tags = ["Shonen", "Rom-com", "Isekai", "Sci-Fi", "SliceOfLife"];
+    const tags = ["Shonen", "Rom-com", "Isekai", "Sci-Fi", "SliceOfLife", "Thriller"];
 
     const handleTagClick = async (tagname) => {
         setSelectedTag(tagname);

@@ -42,7 +42,7 @@ const Home = () => {
                     
                         <Typography variant="body1" sx={{  whiteSpace: 'normal'}}>{anime.name}</Typography>
                         <Link to={`/animes/${anime.name}`}>
-                        <img  height={"330px"} width={"200px"} src={anime.imageUrl} alt={anime.name} />
+                        <img  height={"300px"} width={"200px"} src={anime.imageUrl} alt={anime.name} />
                         </Link>
                     </Box>
                     </div>

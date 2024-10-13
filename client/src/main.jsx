@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')).render(
        maxWidth={"100%"}
        flexDirection="column"
        boxSizing="border-box" // Ensure padding and borders are included in the element's total width and height
-       overflow={"hidden"}
+      //  overflow={"hidden"}
     >
     <App />
     </Box>
